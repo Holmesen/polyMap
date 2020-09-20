@@ -9,11 +9,14 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# sys.path.insert(0, os.path.join(BASE_DIR, 'polymap/polymap'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'polymap.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pythondb',
+        'USER': 'root',
+        'PASSWORD': '0000',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -118,3 +125,89 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+# redis配置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    "session": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# session状态信息保存位置
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "session"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # 是否禁用已存在的日志器
+    'formatters': {  # 日志格式
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {  # 日志过滤器
+        # 'special': {
+        #     '()': 'project.logging.SpecialFilter',
+        #     'foo': 'bar',
+        # },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {  # 日志处理方法
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(os.path.dirname(BASE_DIR), 'logs/polymap.log'),  # 日志文件
+            'maxBytes': 10 * 1024 * 1024,  # 每份日志文件的最大存储
+            'backupCount': 10,  # 最多备份多少个文件
+            'formatter': 'verbose'
+        },
+        # 'mail_admins': {
+        #     'level': 'ERROR',
+        #     'class': 'django.utils.log.AdminEmailHandler',
+        #     'filters': ['special']
+        # }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'propagate': True,
+        },
+        # 'django.request': {
+        #     'handlers': ['mail_admins', 'file'],
+        #     'level': 'ERROR',
+        #     'propagate': False,
+        # },
+        # 'myproject.custom': {
+        #     'handlers': ['console', 'mail_admins', 'file'],
+        #     'level': 'INFO',
+        #     'filters': ['special']
+        # }
+    }
+}

@@ -1,0 +1,19 @@
+INFO 2020-09-20 18:15:03,221 autoreload 14208 2776 Watching for file changes with StatReloader
+INFO 2020-09-20 18:15:36,805 autoreload 14208 2776 D:\PythonProject\polyMap\polymap\polymap\settings\dev.py changed, reloading.
+INFO 2020-09-20 18:15:38,107 autoreload 15732 19600 Watching for file changes with StatReloader
+INFO 2020-09-20 18:18:48,968 autoreload 8328 21564 Watching for file changes with StatReloader
+INFO 2020-09-20 18:20:07,535 autoreload 8328 21564 D:\PythonProject\polyMap\polymap\polymap\settings\dev.py changed, reloading.
+INFO 2020-09-20 18:20:08,767 autoreload 12352 22472 Watching for file changes with StatReloader
+INFO 2020-09-20 18:20:52,612 basehttp 12352 20024 "GET / HTTP/1.1" 200 16351
+INFO 2020-09-20 18:20:52,846 basehttp 12352 20024 "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+INFO 2020-09-20 18:20:53,179 basehttp 12352 10924 "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+INFO 2020-09-20 18:20:53,180 basehttp 12352 20024 "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+INFO 2020-09-20 18:20:53,184 basehttp 12352 3164 "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+INFO 2020-09-20 22:27:30,509 autoreload 19728 22696 Watching for file changes with StatReloader
+WARNING 2020-09-20 22:27:53,646 basehttp 19728 27424 "GET /static/imgs/girl.png HTTP/1.1" 404 1665
+WARNING 2020-09-20 22:29:38,866 basehttp 19728 25960 "GET /static/perry.png HTTP/1.1" 404 1653
+INFO 2020-09-20 22:33:04,818 autoreload 25256 18120 Watching for file changes with StatReloader
+INFO 2020-09-20 22:33:30,570 basehttp 25256 23916 "GET /static/perry.png HTTP/1.1" 200 8956288
+INFO 2020-09-20 22:33:46,294 basehttp 25256 23660 "GET /static/imgs/girl.png HTTP/1.1" 200 369664
+WARNING 2020-09-20 22:33:51,602 basehttp 25256 23660 "GET /static/imgs/girl HTTP/1.1" 404 1653
+INFO 2020-09-20 22:34:39,221 basehttp 25256 11580 "GET /static/files/web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91_%E6%9E%97%E5%B0%91%E6%A3%AE.pdf HTTP/1.1" 200 752115
